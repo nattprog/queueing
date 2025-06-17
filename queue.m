@@ -84,7 +84,7 @@ set_litresCDFandRange();
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% START OF GENERATING VEHICLES
+% START OF GENERATING VEHICLES RANDS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 global numOfVehicles;
@@ -94,7 +94,23 @@ numOfVehicles = 10;
 set_vehicles();
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% END OF GENERATING VEHICLES
+% END OF GENERATING VEHICLES RANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF CALCULATING VEHICLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+global vehicles__petrolType vehicles__litres vehicles__totalPrice;
+
+calc_totalPrice()
+
+global vehicles__interArrivalTime vehicles__arrivalTime;
+
+calc_arrivalTime()
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END OF CALCULATING VEHICLES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 table_interArrivalTime()
