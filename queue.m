@@ -20,3 +20,5 @@ elseif (sumProb ~= 1)
     disp('Error: ST probability does not add up to 1')
     return
 end
+
+disp('Queue end')
