@@ -90,7 +90,7 @@ set_litresCDFandRange();
 global numOfVehicles;
 global vehicles__refuelTime__rands vehicles__interArrivalTime__rands vehicles__petrolType__rands vehicles__litres__rands
 
-numOfVehicles = 6;
+numOfVehicles = 4;
 set_vehicles();
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
