@@ -5,6 +5,7 @@ function p= queue()
 seed(69, 69);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF GLOBAL VARS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 numOfVehicles = 10;
@@ -13,46 +14,76 @@ numOfVehicles = 10;
 refuelTime__RANGE__MULTIPLIER = 100;
 interArrivalTime__RANGE__MULTIPLIER = 1000;
 petrolType__RANGE__MULTIPLIER = 100;
+litres__RANGE__MULTIPLIER = 100;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END OF GLOBAL VARS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Creating: refuelTime__vals, refuelTime__vals__prob, refuelTime__vals__prob__CDF
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF SETTING DISTRIBUTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% Setting service time
-refuelTime__vals = {1,2,3,4,5,6};
-% Setting service time 
-refuelTime__vals__prob = {0.1,0.2,0.3,0.25,0.1,0.05};
-
+refuelTime__vals = {{1,2,3,4,5,6},
+                    {3,4,5,6,7,8},
+                    {2,3,4,5,6,7},
+                    {4,5,6,7,8,9}};
+refuelTime__vals__prob = {{0.1,0.2,0.3,0.25,0.1,0.05},
+                            {0.2,0.1,0.25,0.3,0.05,0.1},
+                            {0.1,0.1,0.2,0.05,0.3,0.25},
+                            {0.2,0.3,0.2,0.1,0.1,0.1}};
 refuelTime__vals__prob__CDF = {};
+refuelTime__vals_prob__range = {};
 
-% Creating probability CDF
-sumProb = 0;
-for i = 1:length(refuelTime__vals__prob)
-    sumProb = sumProb + refuelTime__vals__prob{i};
-    refuelTime__vals__prob__CDF{i} = sumProb;
+for pump = 1:length(refuelTime__vals)
+    % Creating: rft__vals, rft__vals__prob, rft__vals__prob__CDF
+
+    % Setting service time
+    rft__vals = refuelTime__vals{pump};
+    % Setting service time 
+    rft__vals__prob = refuelTime__vals__prob{pump};
+
+    rft__vals__prob__CDF = {};
+
+    % Creating probability CDF
+    sumProb = 0;
+    for i = 1:length(rft__vals__prob)
+        sumProb = sumProb + rft__vals__prob{i};
+        rft__vals__prob__CDF{i} = sumProb;
+    end
+
+    % Creating CDF range
+    rft__vals__prob__range = {};
+    lower = 0+1;
+    higher = floor(refuelTime__RANGE__MULTIPLIER*rft__vals__prob__CDF{1});
+    rft__vals__prob__range{1} = {lower, higher};
+    for i = 2:length(rft__vals__prob__CDF)
+        lower = floor(refuelTime__RANGE__MULTIPLIER*rft__vals__prob__CDF{i-1}) + 1;
+        higher = floor(refuelTime__RANGE__MULTIPLIER*rft__vals__prob__CDF{i});
+        rft__vals__prob__range{i} = {lower, higher};
+    end
+
+    % Checking validity
+    if (length(rft__vals) ~= length(rft__vals__prob) || length(rft__vals) ~= length(rft__vals__prob__range))
+        rft__vals
+        rft__vals__prob
+        rft__vals__prob__range
+        disp('Error: Mismatched rft__vals, rft__vals__prob, rft__vals__prob__range')
+        return
+    elseif (abs(sumProb - 1) > 1e-10)
+        rft__vals__prob
+        disp('Error: rft__vals__prob does not add up to 1')
+        return
+    end
+
+    refuelTime__vals__prob__CDF{pump} = rft__vals__prob__CDF;
+    refuelTime__vals_prob__range{pump} = rft__vals__prob__range;
 end
 
-% Creating CDF range
-refuelTime__vals__prob__range = {};
-lower = 0+1;
-higher = floor(refuelTime__RANGE__MULTIPLIER*refuelTime__vals__prob__CDF{1});
-refuelTime__vals__prob__range{1} = {lower, higher};
-for i = 2:length(refuelTime__vals__prob__CDF)
-    lower = floor(refuelTime__RANGE__MULTIPLIER*refuelTime__vals__prob__CDF{i-1}) + 1;
-    higher = floor(refuelTime__RANGE__MULTIPLIER*refuelTime__vals__prob__CDF{i});
-    refuelTime__vals__prob__range{i} = {lower, higher};
-end
-
-% Checking validity
-if (length(refuelTime__vals) ~= length(refuelTime__vals__prob) || length(refuelTime__vals) ~= length(refuelTime__vals__prob__range))
-    disp('Error: Mismatched refuelTime__vals, refuelTime__vals__prob, refuelTime__vals__prob__range')
-    return
-elseif (sumProb ~= 1)
-    disp('Error: refuelTime__vals__prob does not add up to 1')
-    return
-end
+refuelTime__vals{4}
+refuelTime__vals__prob{4}
+refuelTime__vals__prob__CDF{4}
+refuelTime__vals_prob__range{4}{1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,7 +119,7 @@ end
 if (length(interArrivalTime__vals) ~= length(interArrivalTime__vals__prob) || length(interArrivalTime__vals) ~= length(interArrivalTime__vals__prob__range))
     disp('Error: Mismatched interArrivalTime__vals, interArrivalTime__vals__prob, interArrivalTime__vals__prob__range')
     return
-elseif (sumProb ~= 1)
+elseif (abs(sumProb - 1) > 1e-10)
     disp('Error: interArrivalTime__vals__prob does not add up to 1')
     return
 end
@@ -120,7 +151,7 @@ end
 if (length(petrolType__vals) ~= length(petrolType__vals__prob))
     disp('Error: Mismatched petrolType__vals and petrolType__vals__prob')
     return
-elseif (sumProb ~= 1)
+elseif (abs(sumProb - 1) > 1e-10)
     disp('Error: petrolType__vals__prob does not add up to 1')
     return
 end
@@ -140,7 +171,7 @@ end
 if (length(petrolType__vals) ~= length(petrolType__vals__prob) || length(petrolType__vals) ~= length(petrolType__vals__prob__range))
     disp('Error: Mismatched petrolType__vals, petrolType__vals__prob, petrolType__vals__prob__range')
     return
-elseif (sumProb ~= 1)
+elseif (abs(sumProb - 1) > 1e-10)
     disp('Error: petrolType__vals__prob does not add up to 1')
     return
 end
@@ -148,6 +179,51 @@ end
 % petrolType = struct('val',petrolType__vals, 'prob', petrolType__vals__prob, 'CDF', petrolType__vals__prob__CDF, 'CDFRange', petrolType__vals__prob__range);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Creating: litres__vals, litres__vals__prob, litres__vals__prob__CDF
+
+
+
+% Setting service time
+litres__vals = {10,20,30,40,50};
+% Setting service time 
+litres__vals__prob = {0.2,0.3,0.3,0.15,0.05};
+
+litres__vals__prob__CDF = {};
+
+% Creating probability CDF
+sumProb = 0;
+for i = 1:length(litres__vals__prob)
+    sumProb = sumProb + litres__vals__prob{i};
+    litres__vals__prob__CDF{i} = sumProb;
+end
+
+% Creating CDF range
+litres__vals__prob__range = {};
+lower = 0+1;
+higher = floor(litres__RANGE__MULTIPLIER*litres__vals__prob__CDF{1});
+litres__vals__prob__range{1} = {lower, higher};
+for i = 2:length(litres__vals__prob__CDF)
+    lower = floor(litres__RANGE__MULTIPLIER*litres__vals__prob__CDF{i-1}) + 1;
+    higher = floor(litres__RANGE__MULTIPLIER*litres__vals__prob__CDF{i});
+    litres__vals__prob__range{i} = {lower, higher};
+end
+
+% Checking validity
+if (length(litres__vals) ~= length(litres__vals__prob) || length(litres__vals) ~= length(litres__vals__prob__range))
+    disp('Error: Mismatched litres__vals, litres__vals__prob, litres__vals__prob__range')
+    return
+elseif (abs(sumProb - 1) > 1e-10)
+    disp('Error: litres__vals__prob does not add up to 1')
+    return
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END OF SETTING DISTRIBUTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF GENERATING VEHICLES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Creating: numOfVehicles, vehicles__refuelTime__rands (list of randomised values for getting service times of the vehicles)
 
@@ -161,19 +237,23 @@ vehicles__refuelTime__rands = floor(1+refuelTime__RANGE__MULTIPLIER*rand(1,numOf
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Creating: numOfInterArrivals, vehicles__interArrivalTime__rands (list of randomised values for getting the inter arrival times)
 
-% numOfInterArrivals
-numOfInterArrivals = numOfVehicles-1;
-
 % randomised inter arrival time from 1 to interArrivalTime__RANGE__MULTIPLIER
-vehicles__interArrivalTime__rands = floor(1+interArrivalTime__RANGE__MULTIPLIER*rand(1,numOfInterArrivals));
-
+vehicles__interArrivalTime__rands = [0, floor(1+interArrivalTime__RANGE__MULTIPLIER*rand(1,numOfVehicles-1))];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Creating: vehicles__interArrivalTime__rands (list of randomised values for getting the inter arrival times)
+% Creating: vehicles__petrolType__rands (list of randomised values for getting the petrol types)
 
 % randomised inter arrival time from 1 to petrolType__RANGE__MULTIPLIER
 vehicles__petrolType__rands = floor(1+petrolType__RANGE__MULTIPLIER*rand(1,numOfVehicles));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Creating: vehicles__litres__rands (list of randomised values for getting the litres)
+
+% randomised inter arrival time from 1 to petrolType__RANGE__MULTIPLIER
+vehicles__litres__rands = floor(1+litres__RANGE__MULTIPLIER*rand(1,numOfVehicles));
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END OF GENERATING VEHICLES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
