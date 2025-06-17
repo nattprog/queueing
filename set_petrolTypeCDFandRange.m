@@ -1,7 +1,7 @@
 function p= set_petrolTypeCDFandRange()
 global petrolType__RANGE__MULTIPLIER;
 
-global petrolType__vals petrolType__valsPrice petrolType__vals__prob petrolType__vals__prob__CDF petrolType__vals__prob__range
+global petrolType__vals petrolType__valsPrice petrolType__vals__prob petrolType__vals__prob__CDF petrolType__vals__prob__range;
 
 % Setting probability CDF
 sumProb = 0;
