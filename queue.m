@@ -117,14 +117,10 @@ table_interArrivalTime()
 table_petrolType()
 table_refuelTime()
 table_litres()
-disp('vehicles__refuelTime__rands')
-vehicles__refuelTime__rands
-disp('vehicles__interArrivalTime__rands')
-vehicles__interArrivalTime__rands
-disp('vehicles__petrolType__rands')
-vehicles__petrolType__rands
-disp('vehicles__litres__rands')
-vehicles__litres__rands
+
+fprintf('\n\n\n')
+disp('Results:')
+fprintf('\n\n\n')
 
 table_resultsOne()
 
