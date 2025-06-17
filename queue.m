@@ -169,10 +169,10 @@ vehicles__interArrivalTime__rands = floor(1+interArrivalTime__RANGE__MULTIPLIER*
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Creating: numOfInterArrivals, vehicles__interArrivalTime__rands (list of randomised values for getting the inter arrival times)
+% Creating: vehicles__interArrivalTime__rands (list of randomised values for getting the inter arrival times)
 
 % randomised inter arrival time from 1 to petrolType__RANGE__MULTIPLIER
-vehicles__interArrivalTime__rands = floor(1+petrolType__RANGE__MULTIPLIER*rand(1,numOfVehicles));
+vehicles__petrolType__rands = floor(1+petrolType__RANGE__MULTIPLIER*rand(1,numOfVehicles));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
