@@ -60,7 +60,7 @@ global petrolType__vals petrolType__valsPrice petrolType__vals__prob petrolType_
 % Setting petrol types
 petrolType__vals = {'Primax95', 'Primax97', 'Dynamic Diesel'};
 % Setting petrol price for types
-petrolType__valsPrice = {2.50, 3.10, 4.10};
+petrolType__valsPrice = {2.05, 3.07, 2.74};
 % Setting petrol types prob distribution
 petrolType__vals__prob = {0.4, 0.3, 0.3};
 
@@ -90,7 +90,7 @@ set_litresCDFandRange();
 global numOfVehicles;
 global vehicles__refuelTime__rands vehicles__interArrivalTime__rands vehicles__petrolType__rands vehicles__litres__rands
 
-numOfVehicles = 10;
+numOfVehicles = 6;
 set_vehicles();
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -125,5 +125,7 @@ disp('vehicles__petrolType__rands')
 vehicles__petrolType__rands
 disp('vehicles__litres__rands')
 vehicles__litres__rands
+
+table_resultsOne()
 
 disp('Queue ended successfully')
