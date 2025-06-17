@@ -88,6 +88,8 @@ set_litresCDFandRange();
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 global numOfVehicles;
+global vehicles__refuelTime__rands vehicles__interArrivalTime__rands vehicles__petrolType__rands vehicles__litres__rands
+
 numOfVehicles = 10;
 set_vehicles();
 
@@ -99,5 +101,13 @@ table_interArrivalTime()
 table_petrolType()
 table_refuelTime()
 table_litres()
+disp('vehicles__refuelTime__rands')
+vehicles__refuelTime__rands
+disp('vehicles__interArrivalTime__rands')
+vehicles__interArrivalTime__rands
+disp('vehicles__petrolType__rands')
+vehicles__petrolType__rands
+disp('vehicles__litres__rands')
+vehicles__litres__rands
 
 disp('Queue ended successfully')

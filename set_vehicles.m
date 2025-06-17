@@ -3,6 +3,10 @@ function p= set_vehicles()
 
 global numOfVehicles;
 global refuelTime__RANGE__MULTIPLIER interArrivalTime__RANGE__MULTIPLIER petrolType__RANGE__MULTIPLIER litres__RANGE__MULTIPLIER;
+global vehicles__refuelTime__rands vehicles__interArrivalTime__rands vehicles__petrolType__rands vehicles__litres__rands
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Creating: numOfVehicles, vehicles__refuelTime__rands (list of randomised values for getting service times of the vehicles)
 
