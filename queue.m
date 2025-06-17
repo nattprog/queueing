@@ -113,15 +113,41 @@ calc_arrivalTime()
 % END OF CALCULATING VEHICLES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-table_interArrivalTime()
-table_petrolType()
-table_refuelTime()
-table_litres()
+table_interArrivalTime() % print table
+table_petrolType() % print table
+table_refuelTime() % print table
+table_litres() % print table
 
 fprintf('\n\n\n')
 disp('Results:')
 fprintf('\n\n\n')
 
-table_resultsOne()
+table_resultsOne() % print tables
+
 
 disp('Queue ended successfully')
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Refuel time (of the pumps) probability distributions
+
+% refuelTime__vals = cell array of cell arrays containing each pumps service times
+% refuelTime__vals__prob = cell array of cell arrays containing each pumps probabilities (not important)
+% refuelTime__vals__prob__CDF = cell array of cell arrays containing each pumps CDF (cumulative thingy) (not important)
+% refuelTime__vals_prob__range = cell array of cell arrays containing each pumps lower and higher bounds for its CDF
+% take a loog at the other __prob__range variables used in calc_arrivalTime, calc_totalPrice etc
+
+% vehicles__refuelTime__rands = 1D array of each vehicles randomised refuel time. The actual amount of refuel time depends on each pumps distribution.
+
+
+% 1D arrays, one element for each vehicle
+
+% vehicles__petrolType = cell array {} for each vehicles petrol type 'Primax95' etc
+% vehicles__litres = array () of ints for each vehicles litres to pump
+% vehicles__totalPrice = array() for floatish values of petrol price* litres, to get amoung each vehicle has to pay
+% vehicles__interArrivalTime = array () of ints of each vehicles  interarrival time
+% vehicles__arrivalTime = array () of ints of each vehicles arrival time
