@@ -1,10 +1,9 @@
-% function r = lcgSeed(seed, a, c, m, n)
-function r = lcgSeed(seed)
+function r = lcgSeed(seed, a, c, m)
 global LCGx LCGa LCGc LCGm LCGn
+    % setting the values for LCG
     LCGx = seed;
-    LCGa = 1664525; 
-    LCGc = 1013904223; 
-    LCGm = 2^32; 
-    % LCGn = n;
+    LCGa = a; 
+    LCGc = c; 
+    LCGm = m; 
 end
 

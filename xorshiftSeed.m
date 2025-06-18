@@ -1,4 +1,5 @@
 function r = xorshiftSeed(seed)
 global xorshiftX;
-    xorshiftX = uint32(seed);
+% set the seed
+    xorshiftX = uint64(seed);
 end
