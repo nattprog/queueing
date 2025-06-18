@@ -2,7 +2,7 @@ function r = callRand(a,b,c)
     global RANDOM_SELECTOR
 
     if (isempty(RANDOM_SELECTOR)) % handling no ramdomiser selected
-        RANDOM_SELECTOR = 0;
+        RANDOM_SELECTOR = 1;
     end
 
     % handling diff number of arguments given
