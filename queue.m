@@ -131,8 +131,9 @@ disp('Queue ended successfully')
 % Queuing System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+global begin_times end_times wait_times spent_times line_nums pump_nums;
 
-
+queue_system() 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
