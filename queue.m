@@ -45,8 +45,11 @@ global interArrivalTime__vals interArrivalTime__vals__prob interArrivalTime__val
 
 % Setting service time
 interArrivalTime__vals = {1,2,3,4,5,6,7,8};
+% interArrivalTime__vals = {1};
 % Setting service time 
 interArrivalTime__vals__prob = {0.125,0.125,0.125,0.125,0.125,0.125,0.125,0.125};
+% interArrivalTime__vals__prob = {1};
+
 
 set_interArrivalTimeCDFandRange();
 
@@ -90,7 +93,7 @@ set_litresCDFandRange();
 global numOfVehicles;
 global vehicles__refuelTime__rands vehicles__interArrivalTime__rands vehicles__petrolType__rands vehicles__litres__rands
 
-numOfVehicles = 4;
+numOfVehicles = 10;
 set_vehicles();
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -131,8 +134,9 @@ disp('Queue ended successfully')
 % Queuing System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+global begin_times end_times wait_times spent_times line_nums pump_nums;
 
-
+queue_system() 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
