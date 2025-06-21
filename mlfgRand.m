@@ -4,14 +4,15 @@ function r = mlfgRand()
 
     if (isempty(mlfgBuffer) || length(mlfgBuffer) ~= mlfgK+1)
         % default j and k offset values
-        mlfgJ = 24;
-        mlfgK = 55;
+        % mlfgJ = 24;
+        % mlfgK = 55;
 
         % seed for rand()
-        seed(12345, 12345);
+        % seed(12345, 12345);
+        mlfgSeed(12345, 12345);
 
         % generating initial values for buffer thing
-        mlfgBuffer = floor(4294967295*rand(1,mlfgK+1));
+        % mlfgBuffer = floor(4294967295*rand(1,mlfgK+1));
     end
 
     % get next value

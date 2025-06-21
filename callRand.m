@@ -32,10 +32,11 @@ function r = callRand(a,b,c)
 
     switch(RANDOM_SELECTOR) % 1 is lcg, 2 is mlfg, 3 is xorshift
     case 1
+        disp()
         for i = 1:a
             for j = 1:b
                 for k = 1:c
-                    r(i,j,k) = rand();
+                    r(i,j,k) = lcgRand();
                 end
             end
         end

@@ -9,7 +9,8 @@ function r = xorshiftRand()
     shift5 = uint64(32);
     
     if isempty(xorshiftX) % handle if not seeded, give default value
-        xorshiftX = bitand(12345,max); % default value if unseeded
+        % xorshiftX = bitand(12345,max); % default value if unseeded
+        xorshiftSeed(12345);
     end
 
     xorshiftX = uint64(xorshiftX); % make sure data type is uint64
