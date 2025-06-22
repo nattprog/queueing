@@ -1,7 +1,9 @@
-function p = table_resultTwo()
+function r = table_resultTwo()
 global numOfVehicles vehicles__petrolType vehicles__litres vehicles__totalPrice;
 global vehicles__arrivalTime begin_times end_times wait_times spent_times;
 global line_nums pump_nums vehicles__interArrivalTime__rands vehicles__refuelTime__rands;
+global pump_data_all;
+pump_data_all = {};
 
 % Table 1: Vehicle Information
 disp('-----------------------------------------------------------------------------------------------------------------------')
@@ -39,6 +41,7 @@ for i = 1:numOfVehicles
         fprintf('| %11.1f | %5.1f | %4.1f ', pump_data(p,1), pump_data(p,2), pump_data(p,3));
     end
     fprintf('| %7.1f | %9.1f |\n', wait_times(i), spent_times(i));
+    pump_data_all{i} = pump_data;
 end
 disp('-----------------------------------------------------------------------------------------------------------------------------------------------------')
 end
