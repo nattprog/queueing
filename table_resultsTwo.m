@@ -5,20 +5,21 @@ global line_nums pump_nums vehicles__interArrivalTime__rands vehicles__refuelTim
 global pump_data_all;
 pump_data_all = {};
 
-% Table 1: Vehicle Information
-disp('-------------------------------------------------------------------------------------------------------------------------------------------------')
-disp('| Vehicle | Type of petrol | Litres | Total Price | RandNum InterarrivalTime | InterarrivalTime | ArrivalTime | LineNumber | RandNum RefuelTime |')
-disp('-------------------------------------------------------------------------------------------------------------------------------------------------')
-for i = 1:numOfVehicles
-    if i > 1
-        inter_arrival = vehicles__arrivalTime(i) - vehicles__arrivalTime(i-1);
-    else
-        inter_arrival = 0;
-    end
+% already included in table one
+% % Table 1: Vehicle Information
+% disp('-------------------------------------------------------------------------------------------------------------------------------------------------')
+% disp('| Vehicle | Type of petrol | Litres | Total Price | RandNum InterarrivalTime | InterarrivalTime | ArrivalTime | LineNumber | RandNum RefuelTime |')
+% disp('-------------------------------------------------------------------------------------------------------------------------------------------------')
+% for i = 1:numOfVehicles
+%     if i > 1
+%         inter_arrival = vehicles__arrivalTime(i) - vehicles__arrivalTime(i-1);
+%     else
+%         inter_arrival = 0;
+%     end
     
-    fprintf('| %-7d | %-14s | %6.0f | %11.2f | %24.0f | %16.0f | %11.1f | %10d | %18.0f |\n', i, vehicles__petrolType{i}, vehicles__litres(i), vehicles__totalPrice(i), vehicles__interArrivalTime__rands(i), inter_arrival, vehicles__arrivalTime(i), line_nums(i), vehicles__refuelTime__rands(i));
-end
-disp('-------------------------------------------------------------------------------------------------------------------------------------------------')
+%     fprintf('| %-7d | %-14s | %6.0f | %11.2f | %24.0f | %16.0f | %11.1f | %10d | %18.0f |\n', i, vehicles__petrolType{i}, vehicles__litres(i), vehicles__totalPrice(i), vehicles__interArrivalTime__rands(i), inter_arrival, vehicles__arrivalTime(i), line_nums(i), vehicles__refuelTime__rands(i));
+% end
+% disp('-------------------------------------------------------------------------------------------------------------------------------------------------')
 
 % Table 2: Pump and Timing Information
 disp(' ')
