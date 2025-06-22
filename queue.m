@@ -6,6 +6,9 @@ function p= queue()
 global station_exploded;
 station_exploded = false;
 
+%global variable for the vehicle data, easier for output later
+global vehicle_data;
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %ask input for not peak or peak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,7 +132,7 @@ disp('Results:')
 fprintf('\n\n\n')
 
 table_resultsOne() % print tables
-
+table_resultsTwo() % print tables
 
 
 
