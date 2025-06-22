@@ -3,6 +3,7 @@ function queue_system()
     global VEHICLE_LOG
     global numOfVehicles vehicles__arrivalTime vehicles__refuelTime vehicles__petrolType vehicles__litres;
     global begin_times end_times wait_times spent_times line_nums pump_nums;
+    global station_exploded;
     
     % Declare new variables for queueing
     line_nums = zeros(1, numOfVehicles); % Lane assignments (1 or 2)
@@ -33,7 +34,7 @@ function queue_system()
         petrol_type = vehicles__petrolType{i};
         
         % Assign to Lane 1 or 2 (random, using main program's randomizer)
-        rand_val = rand(); % Replace with M1�s randomizer
+        rand_val = rand(); % Replace with M1ï¿½s randomizer
         line_num = (rand_val < 0.5) + 1; % Lane 1 or 2
         line_nums(i) = line_num;
         
@@ -51,17 +52,14 @@ function queue_system()
                 pump_idx = find(pump_free(1:2) == earliest_pump, 1);
                 calc_refuelTime(vehicle_num, pump_idx);
                 begin_time = max(arrival_time, earliest_pump);
-                wait_time = begin_time - arrival_time;    
+                wait_time = begin_time - arrival_time;
                 
-                 % Check for explosion
-                explosion_prob = 100000; % 1% 
-                %chance of explosion,  currently set to a huge nuber to test it works or not
-                if callRand(0,1000) < explosion_prob
-                    fprintf('Explosion occurred at Pump %d at minute %.2f! Simulation stopped.\n', ...
-                            pump_idx, begin_time);
-                    addLog(begin_time, sprintf('Explosion occurred at Pump %d at minute %.2f! Simulation stopped.\n', ...
-                            pump_idx, begin_time));
-                    return; % Stop simulation
+                if station_exploded
+                    return; % Stop if explosion occurred
+                end
+                check_explosion(pump_idx, begin_time);
+                if station_exploded
+                    return; % Stop if explosion occurred
                 end
                 
                 end_time = begin_time + vehicles__refuelTime(vehicle_num);%refuel_time;
@@ -93,15 +91,12 @@ function queue_system()
                 begin_time = max(arrival_time, earliest_pump);
                 wait_time = begin_time - arrival_time;
 
-                % Check for explosion
-                explosion_prob = 1000000; % 1% 
-                %chance of explosion, currently set to a huge nuber to test it works or not
-                if callRand(0,1000) < explosion_prob
-                    fprintf('Explosion occurred at Pump %d at minute %.2f! Simulation stopped.\n', ...
-                            pump_idx, begin_time);
-                    addLog(begin_time, sprintf('Explosion occurred at Pump %d at minute %.2f! Simulation stopped.\n', ...
-                            pump_idx, begin_time));
-                    return; % Stop simulation
+                if station_exploded
+                    return; % Stop if explosion occurred
+                end
+                check_explosion(pump_idx, begin_time);
+                if station_exploded
+                    return; % Stop if explosion occurred
                 end
                 
                 end_time = begin_time + vehicles__refuelTime(vehicle_num);%refuel_time;refuel_time;
@@ -148,6 +143,14 @@ function queue_system()
                 end_time = begin_time + refuel_time;
                 pump_free(pump_idx) = end_time;
                 
+                if station_exploded
+                    return; % Stop if explosion occurred
+                end
+                check_explosion(pump_idx, begin_time);
+                if station_exploded
+                    return; % Stop if explosion occurred
+                end
+                
                 % Store timing variables
                 idx = find([1:numOfVehicles] == vehicle_num); % Find index
                 begin_times(idx) = begin_time;
@@ -185,6 +188,14 @@ function queue_system()
                 end_time = begin_time + refuel_time;
                 pump_free(pump_idx) = end_time;
                 
+                if station_exploded
+                    return; % Stop if explosion occurred
+                end
+                check_explosion(pump_idx, begin_time);
+                if station_exploded
+                    return; % Stop if explosion occurred
+                end
+                
                 % Store timing variables
                 idx = find([1:numOfVehicles] == vehicle_num); % Find index
                 begin_times(idx) = begin_time;
@@ -200,7 +211,7 @@ function queue_system()
                 fprintf('Vehicle %d finished refueling and departed Pump %d at minute %.2f\n', ...
                         vehicle_num, pump_idx, end_time);
                 addLog(end_time, sprintf('Vehicle %d finished refueling and departed Pump %d at minute %.2f\n', ...
-                        vehicle_num, pump_idx, end_time))
+                        vehicle_num, pump_idx, end_time));
             else
                 break;
             end
