@@ -38,8 +38,8 @@ function queue_system()
         line_nums(i) = line_num;
         
         % Display arrival message
-        fprintf('Vehicle %d arrived at minute %.2f and joined Lane %d\n', ...
-                vehicle_num, arrival_time, line_num);
+        % fprintf('Vehicle %d arrived at minute %.2f and joined Lane %d\n', ...
+        %         vehicle_num, arrival_time, line_num);
         addLog(arrival_time,sprintf('Vehicle %d arrived at minute %.2f and joined Lane %d\n', ...
                 vehicle_num, arrival_time, line_num));
         
@@ -62,8 +62,8 @@ function queue_system()
                 spent_times(i) = end_time - arrival_time;
                 pump_nums(i) = pump_idx;
                 
-                fprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
-                        vehicle_num, petrol_type, pump_idx, begin_time);
+                % fprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
+                %         vehicle_num, petrol_type, pump_idx, begin_time);
                 addLog(begin_time, sprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
                         vehicle_num, petrol_type, pump_idx, begin_time));
             else
@@ -90,8 +90,8 @@ function queue_system()
                 spent_times(i) = end_time - arrival_time;
                 pump_nums(i) = pump_idx;
                 
-                fprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
-                        vehicle_num, petrol_type, pump_idx, begin_time);
+                % fprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
+                %         vehicle_num, petrol_type, pump_idx, begin_time);
                 addLog(begin_time, sprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
                         vehicle_num, petrol_type, pump_idx, begin_time));
             else
@@ -102,8 +102,8 @@ function queue_system()
         
         % Display departure
         if begin_times(i) > 0 || vehicle_num == 1 % Check if begin_time was set OR if vehicle is first vehicle
-            fprintf('Vehicle %d finished refueling and departed Pump %d at minute %.2f\n', ...
-                    vehicle_num, pump_idx, end_times(i));
+            % fprintf('Vehicle %d finished refueling and departed Pump %d at minute %.2f\n', ...
+            %         vehicle_num, pump_idx, end_times(i));
             addLog(end_times(i), sprintf('Vehicle %d finished refueling and departed Pump %d at minute %.2f\n', ...
                     vehicle_num, pump_idx, end_times(i)));
         end
@@ -132,12 +132,12 @@ function queue_system()
                 spent_times(idx) = end_time - arrival_time;
                 pump_nums(idx) = pump_idx;
                 
-                fprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
-                        vehicle_num, petrol_type, pump_idx, begin_time);
+                % fprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
+                %         vehicle_num, petrol_type, pump_idx, begin_time);
                 addLog(begin_time, sprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
                         vehicle_num, petrol_type, pump_idx, begin_time));
-                fprintf('Vehicle %d finished refueling and departed Pump %d at minute %.2f\n', ...
-                        vehicle_num, pump_idx, end_time);
+                % fprintf('Vehicle %d finished refueling and departed Pump %d at minute %.2f\n', ...
+                %         vehicle_num, pump_idx, end_time);
                 addLog(end_time, sprintf('Vehicle %d finished refueling and departed Pump %d at minute %.2f\n', ...
                         vehicle_num, pump_idx, end_time));
             else
@@ -169,12 +169,12 @@ function queue_system()
                 spent_times(idx) = end_time - arrival_time;
                 pump_nums(idx) = pump_idx;
                 
-                fprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
-                        vehicle_num, petrol_type, pump_idx, begin_time);
+                % fprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
+                %         vehicle_num, petrol_type, pump_idx, begin_time);
                 addLog(begin_time, sprintf('Vehicle %d began refueling with %s at Pump %d at minute %.2f\n', ...
                         vehicle_num, petrol_type, pump_idx, begin_time));
-                fprintf('Vehicle %d finished refueling and departed Pump %d at minute %.2f\n', ...
-                        vehicle_num, pump_idx, end_time);
+                % fprintf('Vehicle %d finished refueling and departed Pump %d at minute %.2f\n', ...
+                %         vehicle_num, pump_idx, end_time);
                 addLog(end_time, sprintf('Vehicle %d finished refueling and departed Pump %d at minute %.2f\n', ...
                         vehicle_num, pump_idx, end_time))
             else
@@ -184,13 +184,13 @@ function queue_system()
     end
 
     % Print ordered version
-    % for i = 1:length(VEHICLE_LOG)
-    %     if ~iscell(VEHICLE_LOG{i})
-    %         continue
-    %     end
-    %     for j = 1:length(VEHICLE_LOG{i})
-    %         fprintf(VEHICLE_LOG{i}{j})
-    %     end
-    % end
+    for i = 1:length(VEHICLE_LOG)
+        if ~iscell(VEHICLE_LOG{i})
+            continue
+        end
+        for j = 1:length(VEHICLE_LOG{i})
+            fprintf(VEHICLE_LOG{i}{j})
+        end
+    end
 
 end

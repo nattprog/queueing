@@ -44,11 +44,11 @@ set_refuelTimeCDFandRange();
 global interArrivalTime__vals interArrivalTime__vals__prob interArrivalTime__vals__prob__CDF interArrivalTime__vals__prob__range;
 
 % Setting service time
-% interArrivalTime__vals = {1,2,3,4,5,6,7,8};
-interArrivalTime__vals = {1};
+interArrivalTime__vals = {1,2,3,4,5,6,7,8};
+% interArrivalTime__vals = {1};
 % Setting service time 
-% interArrivalTime__vals__prob = {0.125,0.125,0.125,0.125,0.125,0.125,0.125,0.125};
-interArrivalTime__vals__prob = {1};
+interArrivalTime__vals__prob = {0.125,0.125,0.125,0.125,0.125,0.125,0.125,0.125};
+% interArrivalTime__vals__prob = {1};
 
 
 set_interArrivalTimeCDFandRange();
