@@ -131,8 +131,7 @@ fprintf('\n\n\n')
 disp('Results:')
 fprintf('\n\n\n')
 
-table_resultsOne() % print tables
-table_resultsTwo() % print tables
+
 
 
 
@@ -143,6 +142,9 @@ table_resultsTwo() % print tables
 global begin_times end_times wait_times spent_times line_nums pump_nums;
 
 queue_system() 
+
+table_resultsOne() % print tables
+table_resultsTwo() % print tables
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
