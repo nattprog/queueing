@@ -40,11 +40,11 @@ global refuelTime__vals refuelTime__vals__prob refuelTime__vals__prob__CDF refue
 refuelTime__vals = {{1,2,3,4,5,6},
                     {3,4,5,6,7,8},
                     {2,3,4,5,6,7},
-                    {4,5,6,7,8,9}};
+                    {3,4,5,6,7,8}};
 
-refuelTime__vals__prob = {{0.1,0.2,0.3,0.25,0.1,0.05},
-                            {0.2,0.1,0.25,0.3,0.05,0.1},
-                            {0.1,0.1,0.2,0.05,0.3,0.25},
+refuelTime__vals__prob = {{0.05,0.1,0.2,0.25,0.3,0.1},
+                            {0.1,0.1,0.2,0.25,0.3,0.05},
+                            {0.05,0.1,0.2,0.3,0.25,0.1},
                             {0.2,0.3,0.2,0.1,0.1,0.1}};
 
 set_refuelTimeCDFandRange();
@@ -55,7 +55,6 @@ set_refuelTimeCDFandRange();
 
 global interArrivalTime__vals interArrivalTime__vals__prob interArrivalTime__vals__prob__CDF interArrivalTime__vals__prob__range;
 
-set_interArrivalTimeCDFandRange();
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -97,6 +96,7 @@ global numOfVehicles;
 global vehicles__refuelTime__rands vehicles__interArrivalTime__rands vehicles__petrolType__rands vehicles__litres__rands
 
 vehicleDensity();
+set_interArrivalTimeCDFandRange();
 set_vehicles();
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

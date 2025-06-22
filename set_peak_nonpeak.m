@@ -3,7 +3,9 @@ function set_peak_nonpeak()
     global isNonPeak;
     
     % Prompt user for peak or non-peak hours
-    response = input('Simulate non-peak hours? (1 for Yes, 0 for No): ');
+    disp('Simulate peak hour traffic: [0]')
+    disp('Simulate normal traffic: [1]')
+    response = input('Enter 0 or 1: ');
     
     % Validate input
     while response ~= 0 && response ~= 1
