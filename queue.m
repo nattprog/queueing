@@ -1,6 +1,12 @@
 function p= queue()
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%set explosion to false
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+global station_exploded;
+station_exploded = false;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %ask input for not peak or peak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 global isNonPeak;
