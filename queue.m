@@ -5,7 +5,7 @@ function p= queue()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 global isNonPeak;
 set_peak_nonpeak();
-
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Setting randomiser seed
 seed(69, 69);
@@ -45,20 +45,11 @@ set_refuelTimeCDFandRange();
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Creating: interArrivalTime__vals, interArrivalTime__vals__prob, interArrivalTime__vals__prob__CDF, interArrivalTime__vals__prob__range
+% Creating: interArrivalTime__vals__prob__CDF, interArrivalTime__vals__prob__range
 
 global interArrivalTime__vals interArrivalTime__vals__prob interArrivalTime__vals__prob__CDF interArrivalTime__vals__prob__range;
 
-% Setting service time
-interArrivalTime__vals = {1,2,3,4,5,6,7,8};
-% interArrivalTime__vals = {1};
-% Setting service time 
-interArrivalTime__vals__prob = {0.125,0.125,0.125,0.125,0.125,0.125,0.125,0.125};
-% interArrivalTime__vals__prob = {1};
-
-
 set_interArrivalTimeCDFandRange();
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,7 +90,7 @@ set_litresCDFandRange();
 global numOfVehicles;
 global vehicles__refuelTime__rands vehicles__interArrivalTime__rands vehicles__petrolType__rands vehicles__litres__rands
 
-numOfVehicles = 10;
+vehicleDensity();
 set_vehicles();
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
