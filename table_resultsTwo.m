@@ -27,7 +27,7 @@ disp('| Vehicle | Pump1Refuel | Begin |  End | Pump2Refuel | Begin |  End | Pump
 disp('-----------------------------------------------------------------------------------------------------------------------------------------------------')
 for i = 1:numOfVehicles
     fprintf('| %-7d ', i);
-    
+    pump_data = zeros(4,3);
     % Print all pump columns with '-' for unused pumps
     current_pump = pump_nums(i);
     
@@ -61,6 +61,8 @@ for i = 1:numOfVehicles
     
     % Print waiting and time spent
     fprintf('| %7.1f | %9.1f |\n', wait_times(i), spent_times(i));
+
+    pump_data(current_pump, 1:3) = [end_times(i)-begin_times(i), begin_times(i), end_times(i)];
     pump_data_all{i} = pump_data;
 end
 disp('-----------------------------------------------------------------------------------------------------------------------------------------------------')

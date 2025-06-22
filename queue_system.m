@@ -254,17 +254,17 @@ function queue_system()
         end
     end
 
-    % FreeMat-compatible display, we can comment this out in the final version
-    if exist('vehicle_data', 'var')
-        fprintf('VehicleNum\tArrivalTime\tRefuelTime\tPetrolType\tLineNum\tPumpNum\tBeginTime\tEndTime\tSpentTime\n');
-        for i = 1:numOfVehicles
-            if ~all(cellfun(@isempty, vehicle_data(i, :))) % Use function handle @isempty
-                fprintf('%.0f\t\t%.2f\t\t%.2f\t\t%s\t\t%.0f\t\t%.0f\t\t%.2f\t\t%.2f\t\t%.2f\n', ...
-                        vehicle_data{i, 1}, vehicle_data{i, 2}, vehicle_data{i, 3}, vehicle_data{i, 4}, ...
-                        vehicle_data{i, 5}, vehicle_data{i, 6}, vehicle_data{i, 7}, vehicle_data{i, 8}, vehicle_data{i, 9});
-            end
-        end
-    end
+    % % FreeMat-compatible display, we can comment this out in the final version
+    % if exist('vehicle_data', 'var')
+    %     fprintf('VehicleNum\tArrivalTime\tRefuelTime\tPetrolType\tLineNum\tPumpNum\tBeginTime\tEndTime\tSpentTime\n');
+    %     for i = 1:numOfVehicles
+    %         if ~all(cellfun(@isempty, vehicle_data(i, :))) % Use function handle @isempty
+    %             fprintf('%.0f\t\t%.2f\t\t%.2f\t\t%s\t\t%.0f\t\t%.0f\t\t%.2f\t\t%.2f\t\t%.2f\n', ...
+    %                     vehicle_data{i, 1}, vehicle_data{i, 2}, vehicle_data{i, 3}, vehicle_data{i, 4}, ...
+    %                     vehicle_data{i, 5}, vehicle_data{i, 6}, vehicle_data{i, 7}, vehicle_data{i, 8}, vehicle_data{i, 9});
+    %         end
+    %     end
+    % end
 
 
 

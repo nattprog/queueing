@@ -1,5 +1,7 @@
 function p= queue()
 
+printPetronas() % Welcome page
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %set explosion to false
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,6 +97,8 @@ set_litresCDFandRange();
 % START OF GENERATING VEHICLES RANDS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
 global numOfVehicles;
 global vehicles__refuelTime__rands vehicles__interArrivalTime__rands vehicles__petrolType__rands vehicles__litres__rands
 
@@ -128,7 +132,7 @@ table_refuelTime() % print table
 table_litres() % print table
 
 fprintf('\n\n\n')
-disp('Results:')
+disp('Simulation:')
 fprintf('\n\n\n')
 
 
@@ -143,8 +147,18 @@ global begin_times end_times wait_times spent_times line_nums pump_nums;
 
 queue_system() 
 
+fprintf('\n\n\n')
+disp('Results:')
+fprintf('\n\n\n')
+
 table_resultsOne() % print tables
 table_resultsTwo() % print tables
+
+fprintf('\n\n\n')
+disp('Interpretation:')
+fprintf('\n\n\n')
+
+interpretOutput()
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
