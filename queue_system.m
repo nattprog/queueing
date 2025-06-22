@@ -244,6 +244,16 @@ function queue_system()
         end
     end
     
+    % Print ordered version
+    for i = 1:length(VEHICLE_LOG)
+        if ~iscell(VEHICLE_LOG{i})
+            continue
+        end
+        for j = 1:length(VEHICLE_LOG{i})
+            fprintf(VEHICLE_LOG{i}{j})
+        end
+    end
+
     % FreeMat-compatible display, we can comment this out in the final version
     if exist('vehicle_data', 'var')
         fprintf('VehicleNum\tArrivalTime\tRefuelTime\tPetrolType\tLineNum\tPumpNum\tBeginTime\tEndTime\tSpentTime\n');
@@ -256,14 +266,6 @@ function queue_system()
         end
     end
 
-    % Print ordered version
-    for i = 1:length(VEHICLE_LOG)
-        if ~iscell(VEHICLE_LOG{i})
-            continue
-        end
-        for j = 1:length(VEHICLE_LOG{i})
-            fprintf(VEHICLE_LOG{i}{j})
-        end
-    end
+
 
 end
