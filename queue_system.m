@@ -51,7 +51,19 @@ function queue_system()
                 pump_idx = find(pump_free(1:2) == earliest_pump, 1);
                 calc_refuelTime(vehicle_num, pump_idx);
                 begin_time = max(arrival_time, earliest_pump);
-                wait_time = begin_time - arrival_time;
+                wait_time = begin_time - arrival_time;    
+                
+                 % Check for explosion
+                explosion_prob = 100000; % 1% 
+                %chance of explosion,  currently set to a huge nuber to test it works or not
+                if callRand(0,1000) < explosion_prob
+                    fprintf('Explosion occurred at Pump %d at minute %.2f! Simulation stopped.\n', ...
+                            pump_idx, begin_time);
+                    addLog(begin_time, sprintf('Explosion occurred at Pump %d at minute %.2f! Simulation stopped.\n', ...
+                            pump_idx, begin_time));
+                    return; % Stop simulation
+                end
+                
                 end_time = begin_time + vehicles__refuelTime(vehicle_num);%refuel_time;
                 pump_free(pump_idx) = end_time;
                 
@@ -80,6 +92,18 @@ function queue_system()
 
                 begin_time = max(arrival_time, earliest_pump);
                 wait_time = begin_time - arrival_time;
+
+                % Check for explosion
+                explosion_prob = 1000000; % 1% 
+                %chance of explosion, currently set to a huge nuber to test it works or not
+                if callRand(0,1000) < explosion_prob
+                    fprintf('Explosion occurred at Pump %d at minute %.2f! Simulation stopped.\n', ...
+                            pump_idx, begin_time);
+                    addLog(begin_time, sprintf('Explosion occurred at Pump %d at minute %.2f! Simulation stopped.\n', ...
+                            pump_idx, begin_time));
+                    return; % Stop simulation
+                end
+                
                 end_time = begin_time + vehicles__refuelTime(vehicle_num);%refuel_time;refuel_time;
                 pump_free(pump_idx) = end_time;
                 
