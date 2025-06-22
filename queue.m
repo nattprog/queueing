@@ -1,5 +1,11 @@
 function p= queue()
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ask input for not peak or peak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+global isNonPeak;
+set_peak_nonpeak();
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Setting randomiser seed
 seed(69, 69);
