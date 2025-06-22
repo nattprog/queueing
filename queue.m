@@ -1,5 +1,17 @@
 function p= queue()
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%set explosion to false
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+global station_exploded;
+station_exploded = false;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ask input for not peak or peak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+global isNonPeak;
+set_peak_nonpeak();
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Setting randomiser seed
 seed(69, 69);
@@ -39,20 +51,11 @@ set_refuelTimeCDFandRange();
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Creating: interArrivalTime__vals, interArrivalTime__vals__prob, interArrivalTime__vals__prob__CDF, interArrivalTime__vals__prob__range
+% Creating: interArrivalTime__vals__prob__CDF, interArrivalTime__vals__prob__range
 
 global interArrivalTime__vals interArrivalTime__vals__prob interArrivalTime__vals__prob__CDF interArrivalTime__vals__prob__range;
 
-% Setting service time
-interArrivalTime__vals = {1,2,3,4,5,6,7,8};
-% interArrivalTime__vals = {1};
-% Setting service time 
-interArrivalTime__vals__prob = {0.125,0.125,0.125,0.125,0.125,0.125,0.125,0.125};
-% interArrivalTime__vals__prob = {1};
-
-
 set_interArrivalTimeCDFandRange();
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,7 +96,7 @@ set_litresCDFandRange();
 global numOfVehicles;
 global vehicles__refuelTime__rands vehicles__interArrivalTime__rands vehicles__petrolType__rands vehicles__litres__rands
 
-numOfVehicles = 10;
+vehicleDensity();
 set_vehicles();
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,7 +131,7 @@ fprintf('\n\n\n')
 table_resultsOne() % print tables
 
 
-disp('Queue ended successfully')
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Queuing System
@@ -162,3 +165,7 @@ queue_system()
 % vehicles__totalPrice = array() for floatish values of petrol price* litres, to get amoung each vehicle has to pay
 % vehicles__interArrivalTime = array () of ints of each vehicles  interarrival time
 % vehicles__arrivalTime = array () of ints of each vehicles arrival time
+
+
+
+disp('Queue ended successfully')
