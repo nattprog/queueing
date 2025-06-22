@@ -6,7 +6,7 @@ function check_explosion(pump_idx, begin_time)
     % Only proceed if no explosion has occurred yet
     if ~station_exploded
         % Define explosion probability (1% chance with callRand(0,1000))
-        explosion_prob = 0.3; % 1% of 1000
+        explosion_prob = 0.001; % 1% of 1000
         
         % Check for explosion (use pump_idx = 0 as sentinel for initial check)
         if callRand(0, 1) < explosion_prob

@@ -140,7 +140,7 @@ fprintf('\n\n\n')
 table_resultsOne() % print tables
 
 
-disp('Queue ended successfully')
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Queuing System
@@ -174,3 +174,7 @@ queue_system()
 % vehicles__totalPrice = array() for floatish values of petrol price* litres, to get amoung each vehicle has to pay
 % vehicles__interArrivalTime = array () of ints of each vehicles  interarrival time
 % vehicles__arrivalTime = array () of ints of each vehicles arrival time
+
+
+
+disp('Queue ended successfully')
