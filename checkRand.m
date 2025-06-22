@@ -7,9 +7,9 @@ xorshiftSeed(12345);
 dividedby = 10;
 range = 0:(1/dividedby):1.00;
 global RANDOM_SELECTOR;
-RANDOM_SELECTOR = 1;
+RANDOM_SELECTOR = 0;
 
-iterations = 10000;
+iterations = 100000;
 
 p = zeros(1,dividedby);
 
