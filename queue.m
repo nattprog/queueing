@@ -12,6 +12,17 @@ station_exploded = false;
 global vehicle_data;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ask input for type of RNG
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+global RANDOM_SELECTOR
+disp('Please choose type of pseudorandom number generator.')
+disp('Linear Congruential Generator (LCG):              [1]')
+disp('Multiplicative Lagged Fibonacci Generator (MLFG): [2]')
+disp('XOR Shift Random Number Generator:                [3]')
+RANDOM_SELECTOR = input('Enter 1 or 2 or 3: ');
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %ask input for not peak or peak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 global isNonPeak;
@@ -59,7 +70,10 @@ set_refuelTimeCDFandRange();
 % Creating: interArrivalTime__vals__prob__CDF, interArrivalTime__vals__prob__range
 
 global interArrivalTime__vals interArrivalTime__vals__prob interArrivalTime__vals__prob__CDF interArrivalTime__vals__prob__range;
-
+interArrivalTime__vals = {};
+interArrivalTime__vals__prob = {};
+interArrivalTime__vals__prob__CDF = {};
+interArrivalTime__vals__prob__range = {};
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

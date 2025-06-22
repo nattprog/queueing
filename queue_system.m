@@ -27,7 +27,7 @@ function queue_system()
         arrival_time = vehicles__arrivalTime(i);
         petrol_type = vehicles__petrolType{i};
         
-        rand_val = rand();
+        rand_val = callRand();
         line_num = (rand_val < 0.5) + 1;
         line_nums(i) = line_num;
         
